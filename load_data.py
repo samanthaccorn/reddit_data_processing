@@ -1,10 +1,9 @@
 import sys
 import json
-
+import sqlite3
 
 def main():
     fields = ['author','subreddit','title','permalink']
-
     
     #Get command line arguements
     file_name = ''
@@ -15,15 +14,25 @@ def main():
         print('ERROR: Invalid input file name')
         exit(0)
 
+    #Set up the database and table
+    conn = sqlite3.connect('test.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE posts (author,subreddit,title,permalink)''')
+
     #Open and read the file
     try:
         file = open(file_name,'r')
 
         for line in file:
             #print(line)
+            data = []
+            command = "INSERT INTO posts VALUES ("
             d = json.loads(line)
             for field in fields:
-                print(d[field])
+                d.append(d[field])
+                command += d[field] + ','
+            command = command[:-1] + ')'
+            c.execute(command)
 
         file.close()
     except:
