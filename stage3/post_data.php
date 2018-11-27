@@ -6,7 +6,7 @@
   <?php
 
     include_once './connect.php';
-
+   
     //$permalink = $_GET['permaink'];
 
     /* create prepared statement */
@@ -19,7 +19,7 @@
       $result = mysqli_stmt_get_result($stmt);?>
    
       <form method="get" action="post_data.php">
-        <?php echo "Cool stuff about the post";?>
+	<?php echo "Cool stuff about the post";?>
         <?php while ($posts = mysqli_fetch_array($result, MYSQLI_NUM)) {
           foreach ($posts as $post) { ?>
             <button type="submit" ><?php echo "\t\t<td>$post</td>\n";?></button><br><?php 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topnav">
+	<a href="./index.html">Home</a>
+	<a class="active" href="#projectdetails">Project Details</a>
+</div>
+
+<h1>Project Details</h1>
+
+<h2>Relational Schema</h2>
+<p>
+<h3>Users</h3>
+Users(username)</br>
+No functional dependencies
+</br>
+<h3>Posts</h3>
+<p>Posts(image_hash,subreddit_handle,poster,reddit_url,imgur_url)</br>
+Functional Dependencies:</p>
+<ul>
+	<li>image_hash &rarr; subreddit_handle </li>
+	<li>image_hash &rarr; poster </li>
+	<li>image_hash &rarr; reddit_url </li>
+	<li>image_has &rarr; imgur_url</li>
+</ul>
+
+<h3>Interests</h3>
+<p>Interests(keyword,frequency,last_hit_timestamp)</br>
+Functional Dependencies:
+</p>
+<ul>
+	<li>keyword &rarr; frequency</li>
+	<li>keyword &rarr; last_hit_timestamp</li>
+</ul>
+
+<h2>Technical Specifics</h2>
+<p>
+We plan on using PHP with Professor Weninger's dsg1 machine. We are also going to use OpenCV for the image hashing and machine learning portions. There are opensource bindings for OpenCV and PHP available, but we will also explore using it with another language and running the code in PHP. 
+</p>
+
+<h2>Where's the data?</h2>
+<p>
+The data will be collected using Reddit BigQuery
+</p>
+
+<h2>Labor Division</h2>
+<p>For this Stage, we all met a few times to write the relation schema and answer these questions. For the rest of the project, the general plan is:</p>
+<ul>
+	<li>Aemile: Front end designer/implementer/creative person and OpenCV lead</li>
+	<li>Sam: Project site manager and OpenCV lead</li>
+	<li>Michelle: Database manager</li>
+	<li>Jack: Resident Reddit expert and backend lead</li>
+</ul>
+
+<h2>Project Timeline</h2>
+<p>Find our project timeline <a href="https://docs.google.com/drawings/d/1uiRj6vU6ixkQGK_ZIhNo5wGXJ3hlzsneXOTki22y6yA/edit?usp=sharing">here</a>.
+
+<h2>Project Demo URL</h2>
+<p>dsg1.cc.nd.edu/noname</p>
+
+</body>
+</html>
