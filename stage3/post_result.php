@@ -11,10 +11,10 @@
   ?>
   Post's title is <?php echo $post_title; ?> <br/>
 
-  <?php
+  <?php 
     /* create prepared statement */
     if ($stmt = mysqli_prepare($conn, "SELECT * FROM posts WHERE title = ?")) {
-
+      
       mysqli_stmt_bind_param($stmt, "s", $post_title);
 
       mysqli_stmt_execute($stmt);
@@ -23,7 +23,7 @@
       <form method="get" action="post_data.php">
         <?php while ($posts = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
-          ?><button type="submit" value="<?php $posts[3]?>" ><?php echo "\t\t<td>$posts[3]</td>\n";?></button><br><?php
+	  ?><button type="submit" value="<?php $posts[3]?>" ><?php echo "\t\t<td>$posts[3]</td>\n";?></button><br><?php 
         }?>
       </form>
       <?php mysqli_stmt_close($stmt);
