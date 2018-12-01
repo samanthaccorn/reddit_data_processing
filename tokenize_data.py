@@ -61,7 +61,9 @@ def main():
         title = title.replace('@',' ')
         title = title.replace('$',' ')
         title = title.replace(':',' ')
-        
+       
+        raw_title = raw_title.replace('"','\'')
+
         tokens = title.split(' ')
         for token in tokens:
             if token in search_dict and raw_title not in search_dict[token]:
@@ -75,17 +77,17 @@ def main():
     w_file = None
     w_file_name = file_name.split('.')[0] + '_tokens.csv'
     w_file_count = 0
-    #try:
-    w_file = open(w_file_name,'w')
-    #except:
-    #    print("ERROR: Unable to open write file")
-    #    exit(0)
+    try:
+        w_file = open(w_file_name,'w')
+    except:
+        print("ERROR: Unable to open write file")
+        exit(0)
 
     for key in search_dict.keys():
-        new_line = key+','
+        new_line = key+',"'
         for item in search_dict[key]:
-            new_line += item + ','
-        new_line = new_line[:-1] + '\n'
+            new_line += item + ';;'
+        new_line = new_line[:-2] + '"\n'
         try:
             w_file.write(new_line)
         except:
